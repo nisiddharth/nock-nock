@@ -16,6 +16,7 @@
 package com.afollestad.nocknock.notifications
 
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT
+import androidx.core.app.NotificationManagerCompat.IMPORTANCE_MAX
 
 /** @author Aidan Follestad (@afollestad) */
 enum class Channel(
@@ -34,6 +35,6 @@ enum class Channel(
       id = "check_failures",
       title = R.string.channel_server_check_failures_title,
       description = R.string.channel_server_check_failures_description,
-      importance = IMPORTANCE_DEFAULT
+      importance = IMPORTANCE_MAX
   )
 }
