@@ -20,8 +20,9 @@ import com.afollestad.nocknock.ui.main.MainViewModel
 import com.afollestad.nocknock.ui.viewsite.ViewSiteViewModel
 import com.afollestad.nocknock.utilities.Qualifiers.IO_DISPATCHER
 import com.afollestad.nocknock.utilities.Qualifiers.MAIN_DISPATCHER
-import org.koin.androidx.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.StringQualifier
+import org.koin.dsl.module
 
 /** @author Aidan Follestad (@afollestad) */
 val viewModelModule = module {
@@ -31,8 +32,8 @@ val viewModelModule = module {
         get(),
         get(),
         get(),
-        get(name = MAIN_DISPATCHER),
-        get(name = IO_DISPATCHER)
+        get(StringQualifier(MAIN_DISPATCHER)),
+        get(StringQualifier(IO_DISPATCHER))
     )
   }
 
@@ -40,8 +41,8 @@ val viewModelModule = module {
     AddSiteViewModel(
         get(),
         get(),
-        get(name = MAIN_DISPATCHER),
-        get(name = IO_DISPATCHER)
+        get(StringQualifier(MAIN_DISPATCHER)),
+        get(StringQualifier(IO_DISPATCHER))
     )
   }
 
@@ -51,8 +52,8 @@ val viewModelModule = module {
         get(),
         get(),
         get(),
-        get(name = MAIN_DISPATCHER),
-        get(name = IO_DISPATCHER)
+        get(StringQualifier(MAIN_DISPATCHER)),
+        get(StringQualifier(IO_DISPATCHER))
     )
   }
 }

@@ -21,7 +21,9 @@ import com.afollestad.nocknock.utilities.providers.RealStringProvider
 import com.afollestad.nocknock.utilities.providers.StringProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import org.koin.dsl.module.module
+import org.koin.core.qualifier.StringQualifier
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
 object Qualifiers {
   const val MAIN_DISPATCHER = "main_dispatcher"
@@ -31,9 +33,9 @@ object Qualifiers {
 /** @author Aidan Follestad (@afollestad) */
 val commonModule = module {
 
-  factory<CoroutineDispatcher>(name = MAIN_DISPATCHER) { Dispatchers.Main }
+  factory<CoroutineDispatcher>(StringQualifier(MAIN_DISPATCHER)) { Dispatchers.Main }
 
-  factory(name = IO_DISPATCHER) { Dispatchers.IO }
+  factory(StringQualifier(IO_DISPATCHER)) { Dispatchers.IO }
 
   factory { RealStringProvider(get()) } bind StringProvider::class
 }

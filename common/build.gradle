@@ -30,7 +30,7 @@ dependencies {
   api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + versions.coroutines
   api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:' + versions.coroutines
 
-  implementation 'org.koin:koin-android:' + versions.koin
+  implementation 'io.insert-koin:koin-android:' + versions.koin
   implementation 'org.mozilla:rhino:' + versions.rhino
 
   api 'com.afollestad:rxkprefs:' + versions.rxkPrefs

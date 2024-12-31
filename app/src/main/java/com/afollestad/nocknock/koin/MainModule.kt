@@ -30,14 +30,15 @@ import com.afollestad.nocknock.notifications.Qualifiers.MAIN_ACTIVITY_CLASS
 import com.afollestad.nocknock.ui.main.MainActivity
 import com.afollestad.nocknock.utilities.ext.systemService
 import okhttp3.OkHttpClient
-import org.koin.dsl.module.module
+import org.koin.core.qualifier.StringQualifier
+import org.koin.dsl.module
 
 val mainActivityCls = MainActivity::class.java
 
 /** @author Aidan Follestad (@afollestad) */
 val mainModule = module {
 
-  single(name = MAIN_ACTIVITY_CLASS) { mainActivityCls }
+  single(StringQualifier(MAIN_ACTIVITY_CLASS)) { mainActivityCls }
 
   single {
     databaseBuilder(get(), AppDatabase::class.java, "NockNock.db")

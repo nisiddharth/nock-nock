@@ -25,16 +25,17 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.koin.standalone.KoinComponent
-import org.koin.standalone.inject
+import org.koin.core.KoinComponent
+import org.koin.core.inject
+import org.koin.core.qualifier.StringQualifier
 import timber.log.Timber.d as log
 
 /** @author Aidan Follestad (@afollestad) */
 class BootReceiver : BroadcastReceiver(), KoinComponent {
 
   private val validationManager by inject<ValidationExecutor>()
-  private val mainDispatcher by inject<CoroutineDispatcher>(name = MAIN_DISPATCHER)
-  private val ioDispatcher by inject<CoroutineDispatcher>(name = IO_DISPATCHER)
+  private val mainDispatcher by inject<CoroutineDispatcher>(StringQualifier(MAIN_DISPATCHER))
+  private val ioDispatcher by inject<CoroutineDispatcher>(StringQualifier(IO_DISPATCHER))
 
   override fun onReceive(
     context: Context,

@@ -30,7 +30,8 @@ import com.afollestad.nocknock.utilities.commonModule
 import com.crashlytics.android.Crashlytics
 import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.android.inject
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 import timber.log.Timber.d as log
@@ -58,12 +59,12 @@ class NockNockApp : Application() {
         notificationsModule,
         viewModelModule
     )
-    startKoin(
-        androidContext = this,
-        modules = modules
-    )
+    startKoin {
+        this.androidContext(this@NockNockApp)
+        this.modules(modules)
+    }
 
-    val nockNotificationManager by inject<NockNotificationManager>()
+      val nockNotificationManager by inject<NockNotificationManager>()
     onActivityLifeChange { activity, resumed ->
       if (resumed) {
         resumedActivities++

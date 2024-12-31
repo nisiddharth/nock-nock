@@ -28,7 +28,9 @@ import com.afollestad.nocknock.utilities.providers.RealNotificationChannelProvid
 import com.afollestad.nocknock.utilities.providers.RealNotificationProvider
 import com.afollestad.nocknock.utilities.providers.RealSdkProvider
 import com.afollestad.nocknock.utilities.providers.SdkProvider
-import org.koin.dsl.module.module
+import org.koin.core.qualifier.StringQualifier
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
 object Qualifiers {
   const val MAIN_ACTIVITY_CLASS = "main_activity_class"
@@ -37,7 +39,7 @@ object Qualifiers {
 val notificationsModule = module {
 
   factory {
-    RealIntentProvider(get(), get(name = MAIN_ACTIVITY_CLASS))
+    RealIntentProvider(get(), get(StringQualifier(MAIN_ACTIVITY_CLASS)))
   } bind IntentProvider::class
 
   factory { RealSdkProvider() } bind SdkProvider::class

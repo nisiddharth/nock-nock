@@ -27,13 +27,15 @@ import com.afollestad.nocknock.ui.NightMode.UNKNOWN
 import com.afollestad.nocknock.utilities.rx.attachLifecycle
 import com.afollestad.rxkprefs.Pref
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.StringQualifier
 import timber.log.Timber.d as log
 
 /** @author Aidan Follestad (afollestad) */
 abstract class DarkModeSwitchActivity : AppCompatActivity() {
 
   private var isDarkModeEnabled: Boolean = false
-  private val darkModePref by inject<Pref<Boolean>>(name = PREF_DARK_MODE)
+  private val darkModePref by inject<Pref<Boolean>>(
+    StringQualifier(PREF_DARK_MODE))
 
   override fun onCreate(savedInstanceState: Bundle?) {
     isDarkModeEnabled = isDarkMode()

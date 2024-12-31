@@ -19,7 +19,8 @@ import com.afollestad.nocknock.engine.ssl.RealSslManager
 import com.afollestad.nocknock.engine.ssl.SslManager
 import com.afollestad.nocknock.engine.validation.RealValidationExecutor
 import com.afollestad.nocknock.engine.validation.ValidationExecutor
-import org.koin.dsl.module.module
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
 /** @author Aidan Follestad (@afollestad) */
 val engineModule = module {

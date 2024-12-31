@@ -17,7 +17,8 @@ package com.afollestad.nocknock.koin
 
 import com.afollestad.rxkprefs.RxkPrefs
 import com.afollestad.rxkprefs.rxkPrefs
-import org.koin.dsl.module.module
+import org.koin.core.qualifier.StringQualifier
+import org.koin.dsl.module
 
 const val PREF_DARK_MODE = "dark_mode"
 
@@ -26,7 +27,7 @@ val prefModule = module {
 
   single { rxkPrefs(get(), "settings") }
 
-  factory(name = PREF_DARK_MODE) {
+  factory(StringQualifier(PREF_DARK_MODE)) {
     get<RxkPrefs>().boolean(PREF_DARK_MODE, false)
   }
 }

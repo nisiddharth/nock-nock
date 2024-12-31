@@ -7,7 +7,9 @@ buildscript {
   repositories {
     google()
     jcenter()
+    mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
+    gradlePluginPortal()
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:' + versions.gradlePlugin
